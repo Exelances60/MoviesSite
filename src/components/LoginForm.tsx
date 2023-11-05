@@ -23,7 +23,7 @@ const InputItem: FC<InputItemProps> = ({
 
 const LoginForm = () => {
   return (
-    <Form>
+    <>
       {inputGroup.map((item, index) => (
         <InputItem key={index} {...item} />
       ))}
@@ -36,7 +36,7 @@ const LoginForm = () => {
           Log in
         </Button>
       </Form.Item>
-    </Form>
+    </>
   );
 };
 

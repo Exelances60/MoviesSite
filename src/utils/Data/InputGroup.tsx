@@ -4,10 +4,10 @@ export const inputGroup = [
   {
     component: Input,
     size: "large",
-    name: "username",
+    name: "email",
     className: "w-[100%] h-12 mt-2 ",
-    placeholder: "Username",
-    rules: [{ required: true, message: "Please input your Username!" }],
+    placeholder: "Email",
+    rules: [{ required: true, message: "Please input your Email!" }],
     prefix: <UserOutlined className="site-form-item-icon" />,
   },
   {
