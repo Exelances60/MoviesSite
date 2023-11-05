@@ -17,12 +17,12 @@ export default async function Home() {
     const response: {
       uid: string;
       email: string;
-      username: string;
+      nickname: string;
     } = await loginWithEmailAndPassword(values.email, values.password);
     if (response.uid) {
       const userData = {
         email: response.email,
-        username: response.username,
+        username: response.nickname,
       };
       const userDataJSON = JSON.stringify(userData);
       cookies().set("user", userDataJSON, { httpOnly: true });
