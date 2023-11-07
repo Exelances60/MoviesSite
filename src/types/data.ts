@@ -21,3 +21,13 @@ export interface IPopulerMovie {
   total_pages: number;
   total_results: number;
 }
+
+export interface IfetchOptions {
+  method: string;
+  headers: {
+    accept: string;
+    Authorization?: string;
+  };
+}
+
+export type INotificationType = "success" | "error" | "warning" | "info";

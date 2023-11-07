@@ -13,7 +13,11 @@ const OverlayContainerImaga = () => {
 
   return (
     <>
-      <div className={`w-full h-full relative ${fade ? "animate-fade" : ""}`}>
+      <div
+        className={`w-full h-full relative ${
+          fade ? "animate-fade brightness-75" : ""
+        }`}
+      >
         <Image
           src={`https://image.tmdb.org/t/p/original${movies.poster_path}`}
           alt="logo"

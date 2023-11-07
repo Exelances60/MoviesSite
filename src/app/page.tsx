@@ -12,6 +12,11 @@ const LoginForm = dynamic(() => import("@/components/LoginForm"), {
 const videoSource = "/video/Login.mp4";
 
 export default async function Home() {
+  const user = await JSON.parse(cookies().get("user")?.value || "{}");
+  if (user.email) {
+    redirect("/MoviePage");
+  }
+
   const submitLogin = async (values: { email: string; password: string }) => {
     "use server";
     const response: {

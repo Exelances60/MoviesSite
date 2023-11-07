@@ -30,7 +30,7 @@ const OverlayCard: FC<IOverlayCard> = ({ results }) => {
 
   return (
     <div className="w-full h-[30vh] flex justify-center items-center  overflow-hidden relative ">
-      {results.slice(0, 10).map((item) => (
+      {results?.slice(0, 10).map((item) => (
         <OverlayCardImage item={item} key={item.id} />
       ))}
     </div>

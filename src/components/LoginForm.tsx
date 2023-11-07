@@ -2,6 +2,7 @@
 import React, { FC } from "react";
 import { Form, Button } from "antd";
 import { inputGroup } from "@/utils/Data/InputGroup";
+import { openNotification } from "@/hooks/useToast";
 
 interface InputItemProps {
   component: React.FC<any>;
@@ -31,6 +32,7 @@ const LoginForm = () => {
         <Button
           type="primary"
           htmlType="submit"
+          onClick={() => openNotification("info", "Login in progress")}
           className="login-form-button w-[100%] h-12 mt-2 bg-blue-500"
         >
           Log in

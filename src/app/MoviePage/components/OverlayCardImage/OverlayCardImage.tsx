@@ -11,7 +11,9 @@ const OverlayCardImage = ({ item }: { item: IMoviePopular }) => {
       <div
         key={item.id}
         className={`lg:w-[30%] w-[100%] h-[100%] mr-2 z-20 relative transition-all duration-500 ease-in-out transform  ${
-          movies?.id === item.id ? "mb-10 grayscale lg:w-[40%]" : ""
+          movies?.id === item.id
+            ? "mb-10 grayscale lg:w-[40%] shadow-black shadow-md"
+            : ""
         } `}
       >
         <Image
