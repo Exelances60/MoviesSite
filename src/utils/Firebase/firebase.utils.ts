@@ -1,17 +1,14 @@
 import { initializeApp } from "firebase/app";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import {
-  addDoc,
   collection,
   getDocs,
   getFirestore,
   query,
   where,
 } from "firebase/firestore";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNcz7OOXlLBBg5Cu-tfKCIlkLA9TwBpMg",
@@ -43,6 +40,18 @@ export const loginWithEmailAndPassword = async (
     const userData = docs.docs[0].data();
     return userData;
   } catch (error: any) {
-    return error.message;
+    throw new Error(error.message);
+  }
+};
+
+export const singOut = async () => {
+  "use server";
+  try {
+    await signOut(auth);
+    console.log("Signed out successfully");
+    cookies().delete("user");
+    redirect("/");
+  } catch (error: any) {
+    throw new Error(error.message);
   }
 };

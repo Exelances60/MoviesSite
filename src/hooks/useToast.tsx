@@ -2,6 +2,7 @@
 import { toast } from "react-toastify";
 
 type ToastType = "success" | "error" | "info" | "warning";
+type ToastTheme = "light" | "dark" | "colored";
 
 interface ToastOptions {
   position?: "top-right" | "top-left" | "bottom-right" | "bottom-left";
@@ -12,15 +13,21 @@ interface ToastOptions {
   draggable?: boolean;
   progress?: undefined;
   transition?: undefined;
+  theme?: ToastTheme;
 }
 
-export const openNotification = (type: ToastType, message: string) => {
+export const openNotification = (
+  type: ToastType,
+  message: string,
+  theme: ToastTheme
+) => {
   const toastOptions: ToastOptions = {
     position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
     draggable: true,
+    theme: theme,
   };
 
   switch (type) {

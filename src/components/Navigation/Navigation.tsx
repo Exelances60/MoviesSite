@@ -1,9 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import navPhoto from "@/../public/next.svg";
-import { UserOutlined } from "@ant-design/icons";
-import { Avatar, Badge } from "antd";
 import { cookies } from "next/headers";
+import NavigationAvatar from "./NavigationAvatar/NavigationAvatar";
 
 const Navigation = async () => {
   const user = await JSON.parse(cookies().get("user")?.value || "{}");
@@ -13,13 +12,8 @@ const Navigation = async () => {
       <div className=" w-full h-full relative ">
         <Image src={navPhoto} alt="logo" width={90} height={90} priority />
       </div>
-      <div className=" w-ful h-full">
-        <Badge dot>
-          <Avatar shape="square" icon={<UserOutlined />} />
-        </Badge>
-      </div>
-
-      <h3 className="ml-2 text-white">{user.username}</h3>
+      <NavigationAvatar />
+      <h3 className="ml-2 text-white cursor-pointer">{user.username}</h3>
     </nav>
   );
 };
