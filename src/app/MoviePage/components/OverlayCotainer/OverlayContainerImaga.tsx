@@ -19,7 +19,9 @@ const OverlayContainerImaga = () => {
         }`}
       >
         <Image
-          src={`https://image.tmdb.org/t/p/original${movies.poster_path}`}
+          src={`https://image.tmdb.org/t/p/original${
+            movies.poster_path || "ssEFC5wfFjj7lJpUgwJDOK1Xu1J.jpg"
+          }`}
           alt="logo"
           layout="fill"
           objectPosition="center"

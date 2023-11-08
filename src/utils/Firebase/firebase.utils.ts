@@ -8,7 +8,6 @@ import {
   where,
 } from "firebase/firestore";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNcz7OOXlLBBg5Cu-tfKCIlkLA9TwBpMg",
@@ -48,9 +47,7 @@ export const singOut = async () => {
   "use server";
   try {
     await signOut(auth);
-    console.log("Signed out successfully");
     cookies().delete("user");
-    redirect("/");
   } catch (error: any) {
     throw new Error(error.message);
   }

@@ -1,3 +1,5 @@
+import { DocumentData } from "firebase/firestore";
+
 export interface IMoviePopular {
   adult: boolean;
   backdrop_path: string;
@@ -31,3 +33,11 @@ export interface IfetchOptions {
 }
 
 export type INotificationType = "success" | "error" | "warning" | "info";
+
+export type ILoginResponse =
+  | {
+      uid: string;
+      email: string;
+      nickname: string;
+    }
+  | DocumentData;

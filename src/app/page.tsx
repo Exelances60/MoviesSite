@@ -4,6 +4,7 @@ import { Form } from "antd";
 import { loginWithEmailAndPassword } from "@/utils/Firebase/firebase.utils";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { ILoginResponse } from "@/types/data";
 
 const LoginForm = dynamic(() => import("@/components/LoginForm"), {
   ssr: true,
@@ -19,11 +20,10 @@ export default async function Home() {
 
   const submitLogin = async (values: { email: string; password: string }) => {
     "use server";
-    const response: {
-      uid: string;
-      email: string;
-      nickname: string;
-    } = await loginWithEmailAndPassword(values.email, values.password);
+    const response: ILoginResponse = await loginWithEmailAndPassword(
+      values.email,
+      values.password
+    );
     if (response.uid) {
       const userData = {
         email: response.email,
