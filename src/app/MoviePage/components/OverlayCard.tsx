@@ -11,10 +11,14 @@ interface IOverlayCard {
 
 const OverlayCard: FC<IOverlayCard> = ({ results }) => {
   const [count, setCount] = useState(0);
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const setMovies = useMovieStore((state) => state.setMovies);
 
   useEffect(() => {
     setMovies(results[count]);
+    window.addEventListener("resize", () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    });
   }, []);
 
   const handleKey = (increment: number) => {
@@ -30,9 +34,17 @@ const OverlayCard: FC<IOverlayCard> = ({ results }) => {
 
   return (
     <div className="w-full h-[30vh] flex justify-center items-center  overflow-hidden relative ">
-      {results?.slice(0, 10).map((item) => (
-        <OverlayCardImage item={item} key={item.id} />
-      ))}
+      {windowSize.width > 868
+        ? results
+            ?.slice(0, 10)
+            .map((item) => <OverlayCardImage item={item} key={item.id} />)
+        : windowSize.width < 640
+        ? results
+            ?.slice(0, 4)
+            .map((item) => <OverlayCardImage item={item} key={item.id} />)
+        : results
+            ?.slice(0, 6)
+            .map((item) => <OverlayCardImage item={item} key={item.id} />)}
     </div>
   );
 };

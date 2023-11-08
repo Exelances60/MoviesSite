@@ -5,6 +5,7 @@ const MovieHomePage = () => {
   return (
     <div className="w-full h-[100vh] ">
       <OverlayCotainer />
+      asdasd
     </div>
   );
 };
