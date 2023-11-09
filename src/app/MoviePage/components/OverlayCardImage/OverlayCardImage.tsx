@@ -12,19 +12,22 @@ const OverlayCardImage = ({ item }: { item: IMoviePopular }) => {
         key={item.id}
         className={`lg:w-[30%] w-[100%] h-[100%] mr-2 z-20 relative transition-all duration-500 ease-in-out transform  ${
           movies?.id === item.id
-            ? "mb-10 grayscale lg:w-[40%] shadow-black shadow-md"
+            ? "mb-10 grayscale lg:w-[40%] shadow-black shadow-md brightness-125 "
             : ""
         } `}
       >
         <Image
           alt="example"
           src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
-          layout="fill"
-          objectFit="cover"
+          fill
           placeholder="blur"
+          sizes="100%"
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
           blurDataURL="https://i.ytimg.com/vi/cYEvZaeY2lQ/maxresdefault.jpg"
           className="rounded-md"
-          objectPosition="center"
         />
       </div>
     </>

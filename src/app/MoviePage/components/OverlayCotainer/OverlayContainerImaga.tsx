@@ -23,12 +23,14 @@ const OverlayContainerImaga = () => {
             movies.poster_path || "ssEFC5wfFjj7lJpUgwJDOK1Xu1J.jpg"
           }`}
           alt="logo"
-          layout="fill"
-          objectPosition="center"
+          fill
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
           placeholder="blur"
-          blurDataURL="https://i.ytimg.com/vi/cYEvZaeY2lQ/maxresdefault.jpg"
-          objectFit="cover"
-          onLoadingComplete={() => setFade(true)}
+          blurDataURL="@/../public/blur.jpg"
+          onLoad={() => setFade(true)}
           quality={100}
           priority={true}
         />

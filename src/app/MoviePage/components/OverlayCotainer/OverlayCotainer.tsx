@@ -3,9 +3,13 @@ import { Skeleton } from "antd";
 import { getPopularMovie } from "@/services/dataFetch";
 import OverlayCard from "../OverlayCard";
 import OverlayContainerImaga from "./OverlayContainerImaga";
+import { IPopulerMovie } from "@/types/data";
 
 const OverlayCotainer = async () => {
-  const { results } = await getPopularMovie();
+  const { results } = await getPopularMovie<IPopulerMovie>(
+    "movie/popular",
+    "GET"
+  );
   return (
     <>
       <div className="w-full h-[75%]  box-border -z-10 relative bottom-20">

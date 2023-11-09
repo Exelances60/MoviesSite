@@ -1,9 +1,15 @@
-import { IPopulerMovie, IfetchOptions } from "@/types/data";
+import { IfetchOptions } from "@/types/data";
 
-export const getPopularMovie = async (): Promise<IPopulerMovie> => {
+type MovieType = "movie/popular" | "tv/popular";
+type MovieMethod = "GET" | "POST" | "PUT" | "DELETE";
+
+export const getPopularMovie = async <T>(
+  type: MovieType,
+  method: MovieMethod
+): Promise<T> => {
   try {
     const options: IfetchOptions = {
-      method: "GET",
+      method: method,
       headers: {
         accept: "application/json",
         Authorization: process.env.TMDB_API_KEY,
@@ -11,7 +17,7 @@ export const getPopularMovie = async (): Promise<IPopulerMovie> => {
     };
 
     const response = await fetch(
-      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      ` https://api.themoviedb.org/3/${type}?language=en-US&page=1`,
       options
     );
 

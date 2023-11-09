@@ -41,3 +41,5 @@ export type ILoginResponse =
       nickname: string;
     }
   | DocumentData;
+
+export type IPromiseType<T> = T extends Promise<infer U> ? U : never;
