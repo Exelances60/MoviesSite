@@ -1,17 +1,25 @@
 "use client";
 
+import { Button, Result } from "antd";
+
 export default function GlobalError({
   error,
-  reset,
 }: {
   error: Error & { digest?: string };
-  reset: () => void;
 }) {
   return (
     <html>
       <body>
-        <h2>Something went wrong!</h2>
-        <button onClick={() => reset()}>Try again</button>
+        <Result
+          status={`${error.message === "404" ? "404" : "500"}`}
+          title={<span className="text-white">Error</span>}
+          subTitle={<span className="text-white">{error.message}</span>}
+          extra={
+            <Button type="primary" onClick={() => {}}>
+              Back Home
+            </Button>
+          }
+        />
       </body>
     </html>
   );

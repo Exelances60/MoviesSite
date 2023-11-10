@@ -6,10 +6,10 @@ interface IPopularMovieCard {
   results: IMoviePopular[];
 }
 
-const PopularMovieCard: FC<IPopularMovieCard> = ({ results }) => {
+const PopulareCard: FC<IPopularMovieCard> = ({ results }) => {
   return (
     <>
-      {results.map((item, index) => {
+      {results?.map((item, index) => {
         if (index > 5) {
           return null;
         }
@@ -58,4 +58,4 @@ const PopularMovieCard: FC<IPopularMovieCard> = ({ results }) => {
   );
 };
 
-export default PopularMovieCard;
+export default PopulareCard;

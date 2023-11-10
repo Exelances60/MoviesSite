@@ -1,7 +1,7 @@
 import { getPopularMovie } from "@/services/dataFetch";
 import { IPopulerMovie } from "@/types/data";
 import React from "react";
-import PopularMovieCard from "./PopularMovieCard";
+import PopularCard from "../../../../components/PopularCard/PopularMovieCard";
 
 const PopularMovie = async () => {
   const { results } = await getPopularMovie<IPopulerMovie>(
@@ -15,7 +15,7 @@ const PopularMovie = async () => {
         <button className="text-white">See All</button>
       </div>
       <div className="flex flex-wrap w-full">
-        <PopularMovieCard results={results} />
+        <PopularCard results={results} />
       </div>
     </div>
   );

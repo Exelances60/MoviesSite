@@ -5,6 +5,9 @@ import OverlayCardImage from "./OverlayCardImage/OverlayCardImage";
 import { useMovieStore } from "@/store/movieStore";
 import { useKeyPress } from "ahooks";
 import { useGetWindowSize } from "@/hooks/useGetWindowSize";
+import { Grid } from "antd";
+
+const { useBreakpoint } = Grid;
 
 interface IOverlayCard {
   results: IMoviePopular[];
@@ -18,8 +21,13 @@ const OverlayCard: FC<IOverlayCard> = ({ results }) => {
   const [sliceCount, setSliceCount] = useState(10);
 
   useEffect(() => {
-    setMovies(results[Math.floor(Math.random() * 10)]);
-  }, []);
+    if (results && results.length > 0) {
+      const randomIndex = Math.floor(
+        Math.random() * Math.min(results.length, 10)
+      );
+      setMovies(results[randomIndex] || null);
+    }
+  }, [results, setMovies]);
 
   useEffect(() => {
     if (windowSize.width > 868) {
