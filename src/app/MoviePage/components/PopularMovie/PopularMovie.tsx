@@ -1,13 +1,10 @@
-import { getPopularMovie } from "@/services/dataFetch";
+import { getPopular } from "@/services/dataFetch";
 import { IPopulerMovie } from "@/types/data";
 import React from "react";
 import PopularCard from "../../../../components/PopularCard/PopularMovieCard";
 
 const PopularMovie = async () => {
-  const { results } = await getPopularMovie<IPopulerMovie>(
-    "movie/popular",
-    "GET"
-  );
+  const { results } = await getPopular<IPopulerMovie>("movie/popular", "GET");
   return (
     <div className=" w-full h-[40%] p-5 box-border">
       <div className="flex  h-[10%] w-full justify-between">

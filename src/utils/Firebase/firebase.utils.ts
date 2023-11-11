@@ -7,6 +7,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
+import { redirect } from "next/dist/server/api-utils";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -47,7 +48,7 @@ export const loginWithEmailAndPassword = async (
 export const singOut = async () => {
   "use server";
   try {
-    cookies().delete("user");
+    await cookies().delete("user");
     await signOut(auth);
   } catch (error: any) {
     throw new Error(error.message);

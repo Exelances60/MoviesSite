@@ -30,7 +30,7 @@ axios.interceptors.response.use(
   }
 );
 
-export const getPopularMovie = async <T>(
+export const getPopular = async <T>(
   type: MovieType,
   method: MovieMethod
 ): Promise<T> => {
@@ -50,6 +50,6 @@ export const getPopularMovie = async <T>(
     const data = response as T;
     return data;
   } catch (error: any) {
-    throw new Error(error);
+    return Promise.reject(error);
   }
 };
