@@ -24,7 +24,7 @@ export default function GlobalError({
                 window.location.reload();
               }}
             >
-              asdasd
+              Refresh
             </Button>
           }
         />

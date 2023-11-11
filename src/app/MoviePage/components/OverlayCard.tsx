@@ -5,9 +5,6 @@ import OverlayCardImage from "./OverlayCardImage/OverlayCardImage";
 import { useMovieStore } from "@/store/movieStore";
 import { useKeyPress } from "ahooks";
 import { useGetWindowSize } from "@/hooks/useGetWindowSize";
-import { Grid } from "antd";
-
-const { useBreakpoint } = Grid;
 
 interface IOverlayCard {
   results: IMoviePopular[];
@@ -33,10 +30,10 @@ const OverlayCard: FC<IOverlayCard> = ({ results }) => {
     if (windowSize.width > 868) {
       setIncrementLimit(9);
       setSliceCount(10);
-    } else if (windowSize.width > 640 && windowSize.width < 868) {
+    } else if (windowSize.width > 640) {
       setIncrementLimit(5);
       setSliceCount(6);
-    } else if (windowSize.width < 640) {
+    } else {
       setIncrementLimit(3);
       setSliceCount(4);
     }
@@ -54,7 +51,7 @@ const OverlayCard: FC<IOverlayCard> = ({ results }) => {
   useKeyPress("leftarrow", () => handleKey(-1));
 
   return (
-    <div className="w-full h-[30vh] flex justify-center items-center overflow-hidden relative ">
+    <div className="w-full h-[30vh] flex justify-center  items-center overflow-hidden relative ">
       {results?.slice(0, sliceCount).map((item) => (
         <OverlayCardImage item={item} key={item.id} />
       ))}

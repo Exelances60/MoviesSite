@@ -15,7 +15,7 @@ const OverlayContainerImaga = () => {
     <>
       <div
         className={`w-full h-full relative ${
-          fade ? "animate-fade brightness-75" : ""
+          fade ? "animate-fade brightness-75  opacity-1" : ""
         }`}
       >
         <Image

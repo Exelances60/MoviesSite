@@ -7,7 +7,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       <Navigation />
-      <Suspense fallback={<Skeleton active />}>{children}</Suspense>
+
+      <div>{children}</div>
     </div>
   );
 };

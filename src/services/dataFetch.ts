@@ -6,8 +6,9 @@ import axios, {
   AxiosResponse,
 } from "axios";
 
-type MovieType = "movie/popular" | "tv/popular";
+type MovieType = "movie/popular" | "tv/popular" | "movie";
 type MovieMethod = "GET" | "POST" | "PUT" | "DELETE";
+type MovieId = number | undefined;
 
 interface AdaptAxiosRequestConfig extends AxiosRequestConfig {
   headers: AxiosRequestHeaders;
@@ -32,7 +33,8 @@ axios.interceptors.response.use(
 
 export const getPopular = async <T>(
   type: MovieType,
-  method: MovieMethod
+  method: MovieMethod,
+  id?: MovieId
 ): Promise<T> => {
   try {
     const options: IfetchOptions = {
@@ -43,7 +45,9 @@ export const getPopular = async <T>(
     };
 
     const response = await axios(
-      ` https://api.themoviedb.org/3/${type}?language=en-US&page=1`,
+      ` https://api.themoviedb.org/3/${type}${
+        id !== undefined ? `/${id}` : ""
+      }?language=en-US&page=1`,
       options
     );
 
