@@ -8,6 +8,7 @@ import {
   where,
 } from "firebase/firestore";
 import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNcz7OOXlLBBg5Cu-tfKCIlkLA9TwBpMg",
@@ -46,8 +47,8 @@ export const loginWithEmailAndPassword = async (
 export const singOut = async () => {
   "use server";
   try {
-    await signOut(auth);
     cookies().delete("user");
+    await signOut(auth);
   } catch (error: any) {
     throw new Error(error.message);
   }

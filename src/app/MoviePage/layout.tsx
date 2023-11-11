@@ -1,5 +1,4 @@
 import Navigation from "@/components/Navigation/Navigation";
-import withAccessControl from "@/utils/withAccesControl/withAccesControl";
 import { Skeleton } from "antd";
 import React, { Suspense } from "react";
 
@@ -12,4 +11,4 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default withAccessControl(Layout);
+export default Layout;

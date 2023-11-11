@@ -1,11 +1,14 @@
 "use client";
 
 import { Button, Result } from "antd";
+import Link from "next/link";
 
 export default function GlobalError({
   error,
+  reset,
 }: {
   error: Error & { digest?: string };
+  reset: () => void;
 }) {
   return (
     <html>
@@ -16,7 +19,7 @@ export default function GlobalError({
           subTitle={<span className="text-white">{error.message}</span>}
           extra={
             <Button type="primary" onClick={() => {}}>
-              Back Home
+              <Link href="/">Back Home</Link>
             </Button>
           }
         />

@@ -1,19 +1,28 @@
 import { IfetchOptions } from "@/types/data";
-import axios from "axios";
+import axios, {
+  AxiosError,
+  AxiosRequestConfig,
+  AxiosRequestHeaders,
+  AxiosResponse,
+} from "axios";
 
 type MovieType = "movie/popular" | "tv/popular";
 type MovieMethod = "GET" | "POST" | "PUT" | "DELETE";
 
-axios.interceptors.request.use(function (config) {
+interface AdaptAxiosRequestConfig extends AxiosRequestConfig {
+  headers: AxiosRequestHeaders;
+}
+axios.interceptors.request.use(function (config: AdaptAxiosRequestConfig) {
+  config.headers = config.headers || {};
   config.headers.Authorization = process.env.TMDB_API_KEY;
   return config;
 });
 
 axios.interceptors.response.use(
-  function (response) {
-    return response;
+  function (response: AxiosResponse): AxiosResponse {
+    return response.data;
   },
-  function (error) {
+  function (error: AxiosError): Promise<AxiosError> {
     if (error.response?.status === 400) {
       return Promise.reject(error.response.status);
     }
@@ -38,7 +47,7 @@ export const getPopularMovie = async <T>(
       options
     );
 
-    const data = response.data;
+    const data = response as T;
     return data;
   } catch (error: any) {
     throw new Error(error);
