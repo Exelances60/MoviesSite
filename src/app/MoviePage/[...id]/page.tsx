@@ -2,8 +2,7 @@ import { getPopular, getVideo } from "@/services/dataFetch";
 import { IMoviePopular } from "@/types/data";
 import React from "react";
 import MovieDetailsImage from "./components/MovieDetailsImage/MovieDetailsImage";
-import PopularMovieCardMotion from "@/components/PopularCard/PopularMovieCardMotion/PopularMovieCardMotion";
-import Paragraph from "antd/es/typography/Paragraph";
+import MovieDetailsText from "./components/MovieDetailsText/MovieDetailsText";
 
 interface Props {
   params: {
@@ -18,31 +17,9 @@ const MovieDetails = async ({ params }: Props) => {
     getVideo(id),
   ]);
   return (
-    <div className="w-full h-[100vh] flex  ">
+    <div className="w-full h-[100vh] flex flex-col md:flex-row lg:flex-row">
       <MovieDetailsImage getData={getData} />
-      <div className="w-[50%] h-full flex flex-col items-center justify-center p-5 pt-10 box-border">
-        <div className="w-full h-full ">
-          <h1 className="text-xl">{getData.title}</h1>
-          <Paragraph
-            style={{
-              color: "#fff",
-              height: "20%",
-            }}
-            ellipsis={{ rows: 8 }}
-            type="success"
-          >
-            {getData.overview}
-          </Paragraph>
-          <PopularMovieCardMotion item={getData} />
-          <div className="w-full h-[25%]">
-            <iframe
-              className="w-full h-full"
-              allowFullScreen
-              src={`https://www.youtube.com/embed/${getVideoData?.key}`}
-            />
-          </div>
-        </div>
-      </div>
+      <MovieDetailsText getData={getData} getVideoData={getVideoData} />
     </div>
   );
 };

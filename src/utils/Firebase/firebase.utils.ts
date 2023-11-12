@@ -36,6 +36,7 @@ export const createUser = async (
   password: string,
   nickname: string
 ) => {
+  "use client";
   if (!email || !password || !nickname) return;
   try {
     const response = await createUserWithEmailAndPassword(
@@ -70,16 +71,6 @@ export const loginWithEmailAndPassword = async (
     const docs = await getDocs(querySnapshot);
     const userData = docs.docs[0].data();
     return userData;
-  } catch (error: any) {
-    throw new Error(error.message);
-  }
-};
-
-export const singOut = async () => {
-  "use server";
-  try {
-    await cookies().delete("user");
-    await signOut(auth);
   } catch (error: any) {
     throw new Error(error.message);
   }

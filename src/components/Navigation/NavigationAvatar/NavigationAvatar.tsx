@@ -5,8 +5,8 @@ import {
   LoginOutlined,
 } from "@ant-design/icons";
 import { Avatar, Badge, Dropdown, Form, MenuProps } from "antd";
-import { singOut } from "@/utils/Firebase/firebase.utils";
 import NavigatonFormButton from "./NavigatonFormButton";
+import { singOut } from "@/utils/Firebase/firebase.utils.server";
 
 const items: MenuProps["items"] = [
   {

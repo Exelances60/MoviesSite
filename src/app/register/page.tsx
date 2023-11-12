@@ -1,26 +1,28 @@
+"use client";
 import { Form } from "antd";
 import React from "react";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import { createUser } from "@/utils/Firebase/firebase.utils";
-import { redirect } from "next/navigation";
+import { openNotification } from "@/hooks/useToast";
+import { useRouter } from "next/navigation";
 
 const videoSource = "/video/Login.mp4";
 
 const Register = () => {
+  const router = useRouter();
   const submitRegister = async (values: {
     email: string;
     password: string;
     username: string;
   }) => {
-    "use server";
     const response = await createUser(
       values.email,
       values.password,
       values.username
     );
-    console.log(response);
     if (response === "User created successfully") {
-      redirect("/");
+      openNotification("success", "Register successfully", "dark");
+      router.push("/");
     }
   };
   return (

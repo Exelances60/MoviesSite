@@ -16,7 +16,7 @@ const MovieDetailsImage: FC<IMovieDetailsImage> = ({ getData }) => {
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 2, type: "spring", delay: 0.2 }}
-        className="w-[50%] h-full"
+        className="w-[100%] lg:w-[50%] h-full"
       >
         <Image
           src={`https://image.tmdb.org/t/p/original${getData.poster_path}`}

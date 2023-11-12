@@ -1,4 +1,5 @@
 "use client";
+import { openNotification } from "@/hooks/useToast";
 import { inputGroupRegister } from "@/utils/Data/InputGroup";
 import { Button, Form } from "antd";
 import React, { FC } from "react";
@@ -30,6 +31,9 @@ const RegisterForm = () => {
         <Button
           type="primary"
           htmlType="submit"
+          onClick={() =>
+            openNotification("success", "Register successfully", "dark")
+          }
           className="login-form-button w-[100%] h-12 mt-2 bg-blue-500"
         >
           Register
