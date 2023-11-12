@@ -1,9 +1,7 @@
 "use client";
+import { inputGroupRegister } from "@/utils/Data/InputGroup";
+import { Button, Form } from "antd";
 import React, { FC } from "react";
-import { Form, Button } from "antd";
-import { inputGroup } from "@/utils/Data/InputGroup";
-import { openNotification } from "@/hooks/useToast";
-
 interface InputItemProps {
   component: React.FC<any>;
   name: string;
@@ -22,27 +20,26 @@ const InputItem: FC<InputItemProps> = ({
   </Form.Item>
 );
 
-const LoginForm = () => {
+const RegisterForm = () => {
   return (
     <>
-      {inputGroup.map((item, index) => (
+      {inputGroupRegister.map((item, index) => (
         <InputItem key={index} {...item} />
       ))}
       <Form.Item>
         <Button
           type="primary"
           htmlType="submit"
-          onClick={() => openNotification("info", "Login in progress", "light")}
           className="login-form-button w-[100%] h-12 mt-2 bg-blue-500"
         >
-          Log in
+          Register
         </Button>
         <div className="flex justify-between mt-2 ">
           <a className="login-form-forgot text-white" href="">
             Forgot password
           </a>
-          <a href="/register" className="text-white">
-            register now!
+          <a href="/" className="text-white">
+            You have an account? Login now!
           </a>
         </div>
       </Form.Item>
@@ -50,4 +47,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

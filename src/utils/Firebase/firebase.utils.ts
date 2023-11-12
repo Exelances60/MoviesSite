@@ -1,15 +1,20 @@
+import { openNotification } from "@/hooks/useToast";
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import {
+  addDoc,
   collection,
   getDocs,
   getFirestore,
   query,
   where,
 } from "firebase/firestore";
-import { redirect } from "next/dist/server/api-utils";
 import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDNcz7OOXlLBBg5Cu-tfKCIlkLA9TwBpMg",
@@ -25,6 +30,31 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 export const dataBase = getFirestore(app);
+
+export const createUser = async (
+  email: string,
+  password: string,
+  nickname: string
+) => {
+  if (!email || !password || !nickname) return;
+  try {
+    const response = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = response.user;
+    await addDoc(collection(dataBase, "users"), {
+      uid: user?.uid,
+      email: user?.email,
+      password: password,
+      nickname,
+    });
+    return "User created successfully";
+  } catch (error: any) {
+    return Promise.reject(error.message);
+  }
+};
 
 export const loginWithEmailAndPassword = async (
   email: string,
