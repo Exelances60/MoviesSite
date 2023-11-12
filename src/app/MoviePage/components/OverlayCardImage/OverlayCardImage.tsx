@@ -16,7 +16,7 @@ const OverlayCardImage = ({ item }: { item: IMoviePopular }) => {
         animate={{ scale: 1, opacity: 1, y: 0 }}
         transition={{ duration: 0.2, type: "spring", bounce: 0.5 }}
         key={item.id}
-        className={`lg:w-[30%] w-[100%] h-[100%] mr-2 z-20 relative transition-all duration-500 ease-in-out transform cursor-pointer   ${
+        className={`lg:w-[30%] w-[100%] h-[100%] mr-2 z-20 relative transition-all duration-500 ease-in-out transform cursor-pointer ${
           movies?.id === item.id
             ? "mb-10 grayscale lg:w-[40%] shadow-black shadow-md brightness-125 "
             : ""

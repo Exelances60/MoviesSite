@@ -72,6 +72,7 @@ export const loginWithEmailAndPassword = async (
     const userData = docs.docs[0].data();
     return userData;
   } catch (error: any) {
-    throw new Error(error.message);
+    console.log(error.message);
+    return Promise.reject(error.message);
   }
 };

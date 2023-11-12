@@ -58,7 +58,7 @@ export const getPopular = async <T>(
   }
 };
 
-export const getVideo = async <T>(id: number): Promise<IVideo | undefined> => {
+export const getVideo = async (id: number): Promise<IVideo | undefined> => {
   try {
     const options = {
       method: "GET",
