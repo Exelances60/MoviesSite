@@ -14,9 +14,9 @@ const MovieDetails = async ({ params }: Props) => {
   const getData = await getPopular<IMoviePopular>("movie", "GET", id);
   console.log(getData);
   return (
-    <div className="w-full h-[100vh] flex bg-red-500">
+    <div className="w-full h-[100vh] flex ">
       <MovieDetailsImage getData={getData} />
-      <div className="w-[50%] bg-blue-200 h-full"></div>
+      <div className="w-[50%] h-full"></div>
     </div>
   );
 };

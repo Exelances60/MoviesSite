@@ -1,22 +1,25 @@
 "use client";
+import { motion, AnimatePresence } from "framer-motion";
 import { selectMovies, useMovieStore } from "@/store/movieStore";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const OverlayContainerImaga = () => {
   const movies = useMovieStore(selectMovies);
-  const [fade, setFade] = useState(false);
-
-  useEffect(() => {
-    setFade(false);
-  }, [movies.poster_path]);
 
   return (
-    <>
-      <div
-        className={`w-full h-full relative ${
-          fade ? "animate-fade brightness-75  opacity-1" : ""
-        }`}
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={movies.poster_path}
+        className={`w-full h-full relative `}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{
+          opacity: 0,
+          scale: 1.1,
+          y: 10,
+        }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
       >
         <Image
           src={`https://image.tmdb.org/t/p/original${
@@ -30,13 +33,12 @@ const OverlayContainerImaga = () => {
           }}
           placeholder="blur"
           blurDataURL="@/../public/blur.jpg"
-          onLoad={() => setFade(true)}
           quality={100}
           priority={true}
         />
-      </div>
-    </>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
-export default OverlayContainerImaga;
+export default React.memo(OverlayContainerImaga);
