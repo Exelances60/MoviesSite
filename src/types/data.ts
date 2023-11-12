@@ -42,4 +42,20 @@ export type ILoginResponse =
     }
   | DocumentData;
 
-export type IPromiseType<T> = T extends Promise<infer U> ? U : never;
+export interface IVideo {
+  id: string;
+  iso_639_1: string;
+  iso_3166_1: string;
+  key: string;
+  name: string;
+  official: boolean;
+  published_at: string;
+  site: string;
+  size: number;
+  type: string;
+}
+
+export interface IVideoType {
+  id: number;
+  results: IVideo[];
+}

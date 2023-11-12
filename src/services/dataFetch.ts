@@ -1,4 +1,4 @@
-import { IfetchOptions } from "@/types/data";
+import { IVideo, IVideoType, IfetchOptions } from "@/types/data";
 import axios, {
   AxiosError,
   AxiosRequestConfig,
@@ -54,6 +54,29 @@ export const getPopular = async <T>(
     const data = response as T;
     return data;
   } catch (error: any) {
+    return Promise.reject(error);
+  }
+};
+
+export const getVideo = async <T>(id: number): Promise<IVideo | undefined> => {
+  try {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+      },
+    };
+
+    const response = (await axios(
+      `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
+      options
+    )) as IVideoType;
+    const data = response;
+    const trailer = data.results.find(
+      (item: IVideo) => item.type === "Trailer"
+    );
+    return trailer;
+  } catch (error) {
     return Promise.reject(error);
   }
 };
