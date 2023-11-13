@@ -8,6 +8,7 @@ import { Avatar, Badge, Dropdown, Form, MenuProps } from "antd";
 import NavigatonFormButton from "./NavigatonFormButton";
 import { singOut } from "@/utils/Firebase/firebase.utils.server";
 import { getScopedI18n } from "@/locales/server";
+import Link from "next/link";
 
 const NavigationAvatar = async () => {
   const t = await getScopedI18n("pages.login");
@@ -15,12 +16,12 @@ const NavigationAvatar = async () => {
   const items: MenuProps["items"] = [
     {
       key: "1",
-      label: <a>{t("profile")}</a>,
+      label: <Link href="/profile">{t("profile")}</Link>,
       icon: <UserOutlined />,
     },
     {
       key: "2",
-      label: <a>{t("setting")}</a>,
+      label: <Link href="/settings">{t("setting")}</Link>,
       icon: <SettingOutlined />,
     },
     {

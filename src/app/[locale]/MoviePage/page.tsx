@@ -4,7 +4,7 @@ import PopularMovie from "./components/PopularMovie/PopularMovie";
 
 const MovieHomePage = () => {
   return (
-    <div className="w-full h-[100vh]  ">
+    <div className="w-full h-[100vh]">
       <OverlayCotainer />
       <PopularMovie />
     </div>
