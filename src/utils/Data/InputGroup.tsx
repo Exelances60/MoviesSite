@@ -1,5 +1,8 @@
+import { useTranslate } from "@/hooks/useTranslate";
+import { useScopedI18n } from "@/locales/client";
 import { UserOutlined } from "@ant-design/icons";
 import { Input } from "antd";
+
 export const inputGroup = [
   {
     component: Input,

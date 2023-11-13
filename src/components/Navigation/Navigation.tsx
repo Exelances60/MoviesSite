@@ -4,6 +4,7 @@ import navPhoto from "@/../public/next.svg";
 import { cookies } from "next/headers";
 import NavigationAvatar from "./NavigationAvatar/NavigationAvatar";
 import Link from "next/link";
+import NavigationSelect from "./NavigationSelect/NavigationSelect";
 
 const Navigation = async () => {
   const user = await JSON.parse(cookies().get("user")?.value || "{}");
@@ -15,6 +16,7 @@ const Navigation = async () => {
           <Image src={navPhoto} alt="logo" width={90} height={90} priority />
         </Link>
       </div>
+      <NavigationSelect />
       <NavigationAvatar />
       <h3 className="ml-2 mt-5 text-white cursor-pointer">{user.username}</h3>
     </nav>

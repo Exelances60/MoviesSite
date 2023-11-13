@@ -1,5 +1,10 @@
 export default {
-  hello: "Hello",
-  "hello.world": "Hello World",
-  welcome: "Hello {name}, welcome to {where}!",
+  "pages.login.login": "Login",
+  "pages.login.forgotPassword": "Forgot Password",
+  "pages.login.register": "Register",
+  "pages.login.profile": "Profile",
+  "pages.login.logout": "Logout",
+  "pages.login.setting": "Settings",
+  "pages.moviePage.popularMovies": "Popular Movies",
+  "pages.moviePage.seeAll": "See All",
 } as const;
