@@ -1,11 +1,11 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { selectMovies, useMovieStore } from "@/store/movieStore";
+import { useMovieStore } from "@/store/movieStore";
 import Image from "next/image";
 import React from "react";
 
 const OverlayContainerImaga = () => {
-  const movies = useMovieStore(selectMovies);
+  const movies = useMovieStore.use.movies();
 
   return (
     <AnimatePresence mode="wait">

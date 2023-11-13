@@ -7,7 +7,7 @@ import Link from "next/link";
 import React from "react";
 
 const OverlayCardImage = ({ item }: { item: IMoviePopular }) => {
-  const movies = useMovieStore((state) => state.movies);
+  const movies = useMovieStore.use.movies();
 
   return (
     <>

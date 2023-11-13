@@ -14,7 +14,7 @@ const OverlayCard: FC<IOverlayCard> = ({ results }) => {
   const [count, setCount] = useState(0);
   const [incrementLimit, setIncrementLimit] = useState(10);
   const windowSize = useGetWindowSize();
-  const setMovies = useMovieStore((state) => state.setMovies);
+  const setMovies = useMovieStore.use.setMovies();
   const [sliceCount, setSliceCount] = useState(10);
 
   useEffect(() => {
