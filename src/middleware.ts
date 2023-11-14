@@ -1,6 +1,6 @@
 // middleware.ts
 import { createI18nMiddleware } from "next-international/middleware";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const I18nMiddleware = createI18nMiddleware({
   locales: ["en", "tr"],
@@ -8,6 +8,11 @@ const I18nMiddleware = createI18nMiddleware({
 });
 
 export function middleware(request: NextRequest) {
+  const cookies = request.cookies.get("user")?.value;
+  if (!cookies) {
+    return NextResponse.rewrite(`${request.nextUrl.origin}/en`);
+  }
+
   return I18nMiddleware(request);
 }
 

@@ -21,7 +21,6 @@ const MovieDetailsImage: FC<IMovieDetailsImage> = ({
   getImageData,
 }) => {
   const { backdrops } = getImageData;
-
   return (
     <>
       <motion.div

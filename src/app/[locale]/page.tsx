@@ -30,7 +30,7 @@ export default async function Home() {
         username: response.nickname,
       };
       const userDataJSON = JSON.stringify(userData);
-      const minutes = 1 * 60 * 1000;
+      const minutes = 15 * 60 * 1000;
       const expirationTime = Date.now() + minutes;
       cookies().set("user", userDataJSON, {
         httpOnly: true,

@@ -1,5 +1,4 @@
 import Navigation from "@/components/Navigation/Navigation";
-import withAccessControl from "@/utils/withAccesControl/withAccesControl";
 import React from "react";
 import { Poppins } from "next/font/google";
 
@@ -18,4 +17,4 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default withAccessControl(Layout);
+export default Layout;
