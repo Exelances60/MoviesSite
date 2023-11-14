@@ -30,7 +30,12 @@ export default async function Home() {
         username: response.nickname,
       };
       const userDataJSON = JSON.stringify(userData);
-      cookies().set("user", userDataJSON, { httpOnly: true });
+      const minutes = 1 * 60 * 1000;
+      const expirationTime = Date.now() + minutes;
+      cookies().set("user", userDataJSON, {
+        httpOnly: true,
+        expires: expirationTime,
+      });
       redirect("/MoviePage");
     }
   };

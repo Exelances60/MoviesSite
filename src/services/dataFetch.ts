@@ -80,3 +80,26 @@ export const getVideo = async (id: number): Promise<IVideo | undefined> => {
     return Promise.reject(error);
   }
 };
+
+export const getImage = async <T>(
+  method: MovieMethod,
+  id?: MovieId
+): Promise<T> => {
+  try {
+    const options = {
+      method: method,
+      headers: {
+        accept: "application/json",
+      },
+    };
+
+    const response = (await axios(
+      `https://api.themoviedb.org/3/movie/${id}/images`,
+      options
+    )) as T;
+    const data = response;
+    return data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
