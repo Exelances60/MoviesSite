@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import NavigationAvatar from "./NavigationAvatar/NavigationAvatar";
 import Link from "next/link";
 import NavigationSelect from "./NavigationSelect/NavigationSelect";
+import withAccessControl from "@/utils/withAccesControl/withAccesControl";
 
 const Navigation = async () => {
   const user = await JSON.parse(cookies().get("user")?.value || "{}");
@@ -23,4 +24,4 @@ const Navigation = async () => {
   );
 };
 
-export default Navigation;
+export default withAccessControl(Navigation);
