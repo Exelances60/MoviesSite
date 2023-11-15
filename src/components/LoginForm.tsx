@@ -39,7 +39,9 @@ const LoginForm = () => {
         <Button
           type="primary"
           htmlType="submit"
-          onClick={() => openNotification("info", "Login in progress", "light")}
+          onClick={() =>
+            openNotification("info", t("logininprogress"), "light")
+          }
           className="login-form-button w-[100%] h-12 mt-2 bg-blue-500"
         >
           {t("login")}
